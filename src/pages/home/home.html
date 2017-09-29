@@ -6,28 +6,11 @@
 
   <ion-content class="card-background-page">
 
-  <ion-card>
-    <img src="assets/img/tailor1.jpg"/>
-    <div class="card-title">São Paulo</div>
-    <div class="card-subtitle">41 Listings</div>
+  <ion-card *ngFor= "let shop of shops"(click)=itemTapped(shop) >
+    <img src="{{shop.shopimg}}"/>
+    <div class="card-title">{{shop.name}}</div>
+
   </ion-card>
 
-  <ion-card>
-    <img src="assets/img/tailor2.jpg"/>
-    <div class="card-title">Amsterdam</div>
-    <div class="card-subtitle">64 Listings</div>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/img/tailor3.jpg"/>
-    <div class="card-title">San Francisco</div>
-    <div class="card-subtitle">72 Listings</div>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/img/tailor1.jpg"/>
-    <div class="card-title">Madison</div>
-    <div class="card-subtitle">28 Listings</div>
-  </ion-card>
 
 </ion-content>

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs'
 import { ShopPage } from '../shop/shop'
+import { QrScannerPage } from '../qr-scanner/qr-scanner'
 /**
  * Generated class for the LoginPage page.
  *
@@ -16,18 +17,49 @@ import { ShopPage } from '../shop/shop'
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  email = '';
+  password = '';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadCtrl: LoadingController,public alertCtrl: AlertController) {
   }
+
+  getLogin(){
+
+    
+    if(this.email == 'user@gmail.com' && this.password == '1234'){
+
+      this.loadCtrl.create({
+        duration: 5000,
+        dismissOnPageChange: true
+      }).present();
+
+      this.navCtrl.push(TabsPage);
+    }
+    else if(this.email == 'shop@gmail.com' && this.password == '1234'){
+
+      this.loadCtrl.create({
+        duration: 5000,
+        dismissOnPageChange: true
+      }).present();
+
+      this.navCtrl.push(ShopPage);
+    }
+    else{
+      let alert = this.alertCtrl.create({
+      title: 'Login Failed',
+      message: 'Did you enter the right credentials?',
+      buttons: ['Ok'],
+      cssClass: 'alertDanger'
+    });
+    alert.present();
+    }
+  }
+
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  userPage(){
-  	this.navCtrl.push(TabsPage)
-  }
-
-  shopPage(){
-  	this.navCtrl.push(ShopPage)
-  }
+ 
 }
